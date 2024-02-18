@@ -2,6 +2,8 @@ const tickets = document.getElementsByClassName("ticket");
 
 let count = 0;
 
+let total = 0; 
+
 let couponButton = document.getElementById("coupon-button");
 couponButton.disabled = true;
 
@@ -9,6 +11,10 @@ let nextButton = document.getElementById("next-button");
 nextButton.disabled = true;
 
 const selectedSeat = document.getElementById('selected-seat') ;
+
+const totalPrice = document.getElementById('total-price') ;
+
+let grandTotal = document.getElementById('grand-total') ;
 
 for (const ticket of tickets) {
   ticket.addEventListener("click", function (event) {
@@ -25,27 +31,52 @@ for (const ticket of tickets) {
     seatCount += 1;
     setInnerText("seat-count", seatCount);
 
-    conditions();
+
 
     const seat = event.target.innerText ;
     console.log(seat);
-    const p = document.createElement('p');
+    let p = document.createElement('p');
     p.innerText = seat ; 
     selectedSeat.appendChild(p) ;
 
 
     const Class = document.getElementById('class')
-    const p2 = document.createElement('p');
+    let p2 = document.createElement('p');
     p2.innerText = 'Economy'; 
     Class.appendChild(p2) ;
 
 
     const price = document.getElementById('price')
-    const p3 = document.createElement('p');
+    let p3 = document.createElement('p');
     p3.innerText = 550; 
     price.appendChild(p3) ;
 
 
+
+
+    let priceNum = parseInt(price.innerText) ;
+    total = total + priceNum ;
+    // console.log(total);
+
+
+    
+    if(count > 4 ){
+        p.innerText ='';
+        p2.innerText = '' ;
+        p3.innerText = '' ; 
+        total = 2200 ; 
+          
+     }
+
+    
+    totalPrice.innerText = total ; 
+   grandTotal.innerText = total ;
+
+
+    conditions(event);
+
+
+  
 
 
 
@@ -64,18 +95,35 @@ function setInnerText(elementId, value) {
 
 
 
-function conditions() {
+function conditions(elementId) {
   let totalSitCount = parseInt(
     document.getElementById("total-seat-count").innerText
   );
   let seatCount = parseInt(document.getElementById("seat-count").innerText);
   if (count > 4) {
-    event.target.disabled = true;
+    elementId.target.disabled = true;
     setInnerText("total-seat-count", 36);
     setInnerText('seat-count', 4);
     alert('can not select more than 4') ;
+     
+
   }
   if (count === 4) {
     couponButton.disabled = false;
   }
+}
+
+
+function discount() {
+    const couponCode = document.getElementById('coupon-code').value ;
+    if(couponCode === 'NEW15') {
+        setInnerText('grand-total', 1870 ) ;
+    } else if(couponCode === 'Couple20') {
+        setInnerText('grand-total', 1760)
+    }else{
+        alert('Wrong Coupon Code') ; 
+    }
+
+    document.getElementById('coupon-code').value = ' ' ; 
+
 }

@@ -166,7 +166,7 @@
             </div>
             <img src="./images/cupon-devider.png" alt="" />
             <div class="p-8">
-              <h3 class="text-4xl font-semibold">Couple 20</h3>
+              <h3 class="text-4xl font-semibold">Couple20</h3>
               <p class="text-xl font-semibold">Coupon Code</p>
             </div>
           </div>
@@ -341,7 +341,7 @@
 
                <div class="bg-[#F7F8F8] p-4 rounded-xl">
                 <div class="lg:flex justify-between border-b-2 border-dashed">
-                    <p class="text-[#030712] font-medium">Seat<span class="bg-[#1DD100] text-white" id="seat-count">0</span></p>
+                    <p class="text-[#030712] font-medium">Seat<span class="bg-[#1DD100] text-white p-[4px]" id="seat-count">0</span></p>
                     <p class="font-medium text-[#030712]">Class</p>
                     <p class="font-medium text-[#030712]">Price</p>
                 </div>
@@ -360,17 +360,17 @@
 
                 <div class="flex justify-between pt-2 font-medium">
                     <p class="text-[#030712]">Total price</p>
-                    <p class="text-[#030712]">BDT <span>0</span></p>
+                    <p class="text-[#030712]">BDT <span id="total-price">0</span></p>
                 </div>
 
                <div class="lg:flex justify-center lg:px-4">
-                <input class="text-[#03071266] outline-none rounded-lg w-full lg:w-1/2 pl-2" type="text" placeholder="Have any copupon?"> 
-                <button id="coupon-button" class="btn bg-[#1DD100] text-[#FFFFFF]">Apply</button>
+                <input class="text-[#03071266] outline-none rounded-lg w-full lg:w-1/2 pl-2" type="text" placeholder="Have any copupon?" id="coupon-code"> 
+                <button onclick="discount()" id="coupon-button" class="btn bg-[#1DD100] text-[#FFFFFF]">Apply</button>
                </div>
 
                <div class="lg:flex justify-between pt-2 font-medium">
-                <p class="text-[#030712]">Grand TOtal</p>
-                <p class="text-[#030712]">BDT <span>0</span></p>
+                <p class="text-[#030712]">Grand Total</p>
+                <p class="text-[#030712]">BDT <span id="grand-total">0</span></p>
             </div>
                </div>
 

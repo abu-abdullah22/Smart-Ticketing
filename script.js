@@ -2,23 +2,31 @@ const tickets = document.getElementsByClassName("ticket");
 
 let count = 0;
 
-let total = 0; 
+let total = 0;
 
 let couponButton = document.getElementById("coupon-button");
 couponButton.disabled = true;
 
-let nextButton = document.getElementById("next-button");
-nextButton.disabled = true;
+const couponCode = document.getElementById("coupon-code");
 
-const selectedSeat = document.getElementById('selected-seat') ;
+const nextButton = document.getElementById('next-button') ;
+nextButton.disabled = true ;
 
-const totalPrice = document.getElementById('total-price') ;
+const selectedSeat = document.getElementById("selected-seat");
 
-let grandTotal = document.getElementById('grand-total') ;
+const totalPrice = document.getElementById("total-price");
+
+let grandTotal = document.getElementById("grand-total");
+
 
 for (const ticket of tickets) {
+   
+
   ticket.addEventListener("click", function (event) {
-    event.target.classList.add("bg-[#1DD100]");
+ 
+    event.target.classList.add("bg-[#1DD100]") ;
+    event.target.classList.add('pointer-events-none');
+  
     count += 1;
 
     let totalSitCount = parseInt(
@@ -31,69 +39,54 @@ for (const ticket of tickets) {
     seatCount += 1;
     setInnerText("seat-count", seatCount);
 
-
-
-    const seat = event.target.innerText ;
+    const seat = event.target.innerText;
     console.log(seat);
-    let p = document.createElement('p');
-    p.innerText = seat ; 
-    selectedSeat.appendChild(p) ;
+    let p = document.createElement("p");
+    p.innerText = seat;
+    selectedSeat.appendChild(p);
 
+    const Class = document.getElementById("class");
+    let p2 = document.createElement("p");
+    p2.innerText = "Economy";
+    Class.appendChild(p2);
 
-    const Class = document.getElementById('class')
-    let p2 = document.createElement('p');
-    p2.innerText = 'Economy'; 
-    Class.appendChild(p2) ;
+    const price = document.getElementById("price");
+    let p3 = document.createElement("p");
+    p3.innerText = 550;
+    price.appendChild(p3);
 
-
-    const price = document.getElementById('price')
-    let p3 = document.createElement('p');
-    p3.innerText = 550; 
-    price.appendChild(p3) ;
-
-
-
-
-    let priceNum = parseInt(price.innerText) ;
-    total = total + priceNum ;
+    let priceNum = parseInt(price.innerText);
+    total = total + priceNum;
     // console.log(total);
 
+    if (count > 4) {
+      p.innerText = "";
+      p2.innerText = "";
+      p3.innerText = "";
+      total = 2200;
+    }
 
-    
-    if(count > 4 ){
-        p.innerText ='';
-        p2.innerText = '' ;
-        p3.innerText = '' ; 
-        total = 2200 ; 
-          
-     }
-
-    
-    totalPrice.innerText = total ; 
-   grandTotal.innerText = total ;
-
+    totalPrice.innerText = total;
+    grandTotal.innerText = total;
 
     conditions(event);
 
+    const phone = document.getElementById('phone').value ; 
+    if(phone.length !== 0 && phone !== null) {
+        nextButton.disabled = false ; 
+    }
 
-  
+ 
 
-
-
+    
   });
+
 }
-
-
-
-
 
 function setInnerText(elementId, value) {
   const element = document.getElementById(elementId);
   element.innerText = value;
 }
-
-
-
 
 function conditions(elementId) {
   let totalSitCount = parseInt(
@@ -103,27 +96,32 @@ function conditions(elementId) {
   if (count > 4) {
     elementId.target.disabled = true;
     setInnerText("total-seat-count", 36);
-    setInnerText('seat-count', 4);
-    alert('can not select more than 4') ;
-     
-
+    setInnerText("seat-count", 4);
+    alert("can not select more than 4");
   }
   if (count === 4) {
     couponButton.disabled = false;
   }
 }
 
-
 function discount() {
-    const couponCode = document.getElementById('coupon-code').value ;
-    if(couponCode === 'NEW15') {
-        setInnerText('grand-total', 1870 ) ;
-    } else if(couponCode === 'Couple20') {
-        setInnerText('grand-total', 1760)
-    }else{
-        alert('Wrong Coupon Code') ; 
-    }
+  const coupon = document.getElementById('coupon');
+ 
+  if (couponCode.value === "NEW15") {
+    setInnerText("grand-total", 1870);
+    couponButton.classList.add('hidden') ; 
+    couponCode.classList.add('hidden') ;
+   
+  } else if (couponCode.value === "Couple20") {
+    setInnerText("grand-total", 1760);
+    couponButton.classList.add('hidden') ;
+    couponCode.classList.add('hidden') ;
+  } else {
+    alert("Wrong Coupon Code");
+  }
 
-    document.getElementById('coupon-code').value = ' ' ; 
-
+  document.getElementById("coupon-code").value = " ";
 }
+
+
+

@@ -256,7 +256,8 @@
                         <p class="text-[#03071280] font-medium">Selected</p>
                     </div>
                 </div>
-                <div class="flex justify-end">
+                <div class="flex justify-between">
+                  <p class="text-xl font-medium">Please fill up the form on the right first to proceed</p>
                     <button class="btn">
                         <img class="" src="./images/wheel.png" alt="">
                     </button>
@@ -363,8 +364,8 @@
                     <p class="text-[#030712]">BDT <span id="total-price">0</span></p>
                 </div>
 
-               <div class="lg:flex justify-center lg:px-4">
-                <input class="text-[#03071266] outline-none rounded-lg w-full lg:w-1/2 pl-2" type="text" placeholder="Have any copupon?" id="coupon-code"> 
+               <div id="coupon" class="lg:flex justify-center lg:px-4">
+                <input class="text-[#03071266] outline-none rounded-lg w-full lg:w-1/2 pl-2" type="text" placeholder="Have any coupon?" id="coupon-code"> 
                 <button onclick="discount()" id="coupon-button" class="btn bg-[#1DD100] text-[#FFFFFF]">Apply</button>
                </div>
 
@@ -383,7 +384,25 @@
                 
                 <p class="font-semibold text-[#030712]">Email ID</p>
                     <input type="email" name="" id="email" placeholder="Enter your email id" class="border-2 border-[#0307121A] rounded-xl w-full h-[64px] outline-none pl-2">
-                <button id="next-button" class="btn bg-[#1DD100] text-white text-xl font-extrabold w-full">Next</button>
+                <button id="next-button"  onclick="my_modal_5.showModal()" class="btn bg-[#1DD100] text-white text-xl font-extrabold w-full">Next</button>
+                <!-- Open the modal using ID.showModal() method -->
+                 <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+                   <div class="modal-box flex flex-col items-center space-y-5">
+                    <img class="text-center" src="./images/success.png" alt="">
+                     <h3 class="font-bold text-2xl text-[#27AE60] text-center">SUCCESS</h3>
+                     <p class="text-center text-[#4A4A4A] font-medium">Thank you for Booking Our Bus Seats. 
+                      We are working hard to find the best service and deals for you. <br>
+                      <br>
+                      <span class="font-light">Shortly you will find a confirmation in your email.</span></p>
+                     <div class="modal-action">
+                       <form method="dialog">
+                         <!-- if there is a button in form, it will close the modal -->
+                         <a href="" class="btn bg-[#27AE60] text-[#FFFFFF]">Continue</a>
+                       </form>
+                     </div>
+                   </div>
+                 </dialog>
+                                
                 
                 </div>
 

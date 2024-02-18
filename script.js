@@ -9,8 +9,8 @@ couponButton.disabled = true;
 
 const couponCode = document.getElementById("coupon-code");
 
-const nextButton = document.getElementById('next-button') ;
-nextButton.disabled = true ;
+const nextButton = document.getElementById("next-button");
+nextButton.disabled = true;
 
 const selectedSeat = document.getElementById("selected-seat");
 
@@ -18,15 +18,11 @@ const totalPrice = document.getElementById("total-price");
 
 let grandTotal = document.getElementById("grand-total");
 
-
 for (const ticket of tickets) {
-   
-
   ticket.addEventListener("click", function (event) {
- 
-    event.target.classList.add("bg-[#1DD100]") ;
-    event.target.classList.add('pointer-events-none');
-  
+    event.target.classList.add("bg-[#1DD100]");
+    event.target.classList.add("pointer-events-none");
+
     count += 1;
 
     let totalSitCount = parseInt(
@@ -71,16 +67,11 @@ for (const ticket of tickets) {
 
     conditions(event);
 
-    const phone = document.getElementById('phone').value ; 
-    if(phone.length !== 0 && phone !== null) {
-        nextButton.disabled = false ; 
+    const phone = document.getElementById("phone").value;
+    if (phone.length !== 0 && phone !== null) {
+      nextButton.disabled = false;
     }
-
- 
-
-    
   });
-
 }
 
 function setInnerText(elementId, value) {
@@ -105,23 +96,19 @@ function conditions(elementId) {
 }
 
 function discount() {
-  const coupon = document.getElementById('coupon');
- 
+  const coupon = document.getElementById("coupon");
+
   if (couponCode.value === "NEW15") {
     setInnerText("grand-total", 1870);
-    couponButton.classList.add('hidden') ; 
-    couponCode.classList.add('hidden') ;
-   
-  } else if (couponCode.value === "Couple20") {
+    couponButton.classList.add("hidden");
+    couponCode.classList.add("hidden");
+  } else if (couponCode.value === "Couple 20") {
     setInnerText("grand-total", 1760);
-    couponButton.classList.add('hidden') ;
-    couponCode.classList.add('hidden') ;
+    couponButton.classList.add("hidden");
+    couponCode.classList.add("hidden");
   } else {
     alert("Wrong Coupon Code");
   }
 
   document.getElementById("coupon-code").value = " ";
 }
-
-
-

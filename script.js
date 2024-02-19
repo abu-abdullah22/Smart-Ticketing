@@ -112,3 +112,4 @@ function discount() {
   document.getElementById("coupon-code").value = " ";
 }
 
+

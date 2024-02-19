@@ -67,10 +67,10 @@ for (const ticket of tickets) {
 
     conditions(event);
 
-    const phone = document.getElementById("phone").value;
-    if (phone.length !== 0 && phone !== null) {
+    const phone = document.getElementById("phone");
+    phone.addEventListener("keyup", function () {
       nextButton.disabled = false;
-    }
+    });
   });
 }
 

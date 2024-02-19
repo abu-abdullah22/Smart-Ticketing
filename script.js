@@ -113,7 +113,7 @@ function discount() {
     couponButton.classList.add("hidden");
     couponCode.classList.add("hidden");
     discountPrice.classList.remove('hidden') ;
-    discountPrice.innerText = 440 ;
+    discountPrice.innerText = 'BDT ' + 440 ;
   } else {
     alert("Wrong Coupon Code");
   }

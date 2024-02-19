@@ -36,7 +36,6 @@ for (const ticket of tickets) {
     setInnerText("seat-count", seatCount);
 
     const seat = event.target.innerText;
-    console.log(seat);
     let p = document.createElement("p");
     p.innerText = seat;
     selectedSeat.appendChild(p);
@@ -53,7 +52,7 @@ for (const ticket of tickets) {
 
     let priceNum = parseInt(price.innerText);
     total = total + priceNum;
-    // console.log(total);
+  
 
     if (count > 4) {
       p.innerText = "";

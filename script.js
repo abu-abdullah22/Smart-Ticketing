@@ -18,6 +18,9 @@ const totalPrice = document.getElementById("total-price");
 
 let grandTotal = document.getElementById("grand-total");
 
+let discountTitle = document.getElementById('discount-title') ;
+let discountPrice = document.getElementById('discount-price') ;
+
 for (const ticket of tickets) {
   ticket.addEventListener("click", function (event) {
     event.target.classList.add("bg-[#1DD100]");
@@ -96,20 +99,25 @@ function conditions(elementId) {
 
 function discount() {
   const coupon = document.getElementById("coupon");
+  discountTitle.classList.remove('hidden') ;
 
   if (couponCode.value === "NEW15") {
     setInnerText("grand-total", 1870);
     couponButton.classList.add("hidden");
     couponCode.classList.add("hidden");
+    discountPrice.classList.remove('hidden') ;
+    
+  
   } else if (couponCode.value === "Couple 20") {
     setInnerText("grand-total", 1760);
     couponButton.classList.add("hidden");
     couponCode.classList.add("hidden");
+    discountPrice.classList.remove('hidden') ;
+    discountPrice.innerText = 440 ;
   } else {
     alert("Wrong Coupon Code");
   }
 
   document.getElementById("coupon-code").value = " ";
 }
-
 
